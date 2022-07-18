@@ -1,0 +1,26 @@
+:root {
+  --main-background-color: #476072;
+  --text-color: #eeeeee;
+  --topbar-color: #334257;
+  --item-color: #548ca8;
+}
+
+body {
+  background-color: var(--main-background-color);
+  margin: 0;
+  padding: 0;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  margin: 0;
+  padding: 2em;
+  width: 100vw;
+  height: 8vh;
+  background-color: var(--topbar-color);
+  color: var(--text-color);
+}
+
+.topbar-right {
+}
