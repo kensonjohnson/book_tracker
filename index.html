@@ -12,30 +12,30 @@
 
 <body>
   <div class="topbar">
-    <div class="topbar-left">
-      <h1>Book Tracker</h1>
-    </div>
+    <h1>Book Tracker</h1>
   </div>
-  <div class="middle">
-    <div class="sidebar">
+  <div class="bookshelf">
+    <div class="form-card">
       <h2>Add Book</h2>
-      <label for="title">Title</label>
-      <input type="text" name="title" id="title" />
-      <label for="author">Author</label>
-      <input type="text" name="author" id="author" />
-      <label for="pages">Number of Pages</label>
-      <input type="number" name="pages" id="pages" />
-      <div>Read yet?</div>
-      <div>
-        <input type="radio" name="read" id="yes" value="yes">
-        <label for="yes">Yes</label>
-        <input type="radio" name="read" id="no" value="no">
-        <label for="no">No</label>
-
+      <div class="form-group"><label for="title">Title</label>
+        <input type="text" name="title" id="title" />
+        <label for="author">Author</label>
+        <input type="text" name="author" id="author" />
+        <label for="pages">Number of Pages</label>
+        <input type="number" name="pages" id="pages" />
+        <label>Read yet?</label>
+        <div>
+          <input type="radio" name="read" id="yes" value="yes">
+          <label for="yes">Yes</label>
+          <input type="radio" name="read" id="no" value="no">
+          <label for="no">No</label>
+        </div>
       </div>
       <button>Add Book</button>
     </div>
-    <div class="bookshelf"></div>
+    <div class="book"></div>
+    <div class="book"></div>
+    <div class="book"></div>
   </div>
   <div class="footer">Created by Kenson Johnson</div>
 </body>

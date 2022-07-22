@@ -5,24 +5,26 @@
   --item-color: #548ca8;
 }
 
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
   background-color: var(--main-background-color);
   margin: 0;
   padding: 0;
-  height: 100vh;
 }
 
 .topbar {
-  display: flex;
-  justify-content: space-between;
   margin: 0;
   width: 100vw;
-  height: 8vh;
+  height: 6rem;
   background-color: var(--topbar-color);
   color: var(--text-color);
+  margin: 0;
+  padding: 2rem;
 }
 
 .topbar-left {
@@ -31,33 +33,84 @@ body {
 .topbar-right {
   padding-right: 2rem;
 }
-.middle {
-  height: 100%;
-  display: flex;
+.bookshelf {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin: 0 auto;
 }
-.sidebar {
+
+.form-card {
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 16rem;
+  height: 28rem;
+  margin: 1rem;
+}
+
+.form-card > h2 {
+  margin-bottom: 2rem;
+}
+
+.form-card > button {
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  text-align: center;
+  width: 100px;
+  height: 35px;
+  text-decoration: none;
+  font-size: 16px;
+  margin-left: 25%;
+}
+
+.form-group {
   display: flex;
   flex-direction: column;
-  padding: 1rem;
-  background-color: var(--main-background-color);
-  width: 20vw;
-  min-width: 250px;
-  height: inherit;
+  margin-bottom: 2rem;
+  gap: 0.5em;
 }
-input {
+
+.form-group:last-child {
+  margin: 0;
+}
+
+.form-group > label {
+  font-weight: bold;
+  font-size: 1.25em;
+  color: #333;
+}
+
+.form-group > input {
+  border: 1px solid #333;
+  border-radius: 0.25em;
+  font-size: 1rem;
+  padding: 0.25em;
   margin-bottom: 1rem;
 }
+
 .bookshelf {
-  background-color: var(--item-color);
   height: 100%;
   width: 100%;
 }
 
+.book {
+  background-color: white;
+  border: 1px solid #333;
+  border-radius: 0.5rem;
+  padding: 0.5rem;
+  width: 16rem;
+  height: 28rem;
+  margin: 1rem;
+}
+
 .footer {
+  position: fixed;
+  bottom: 0;
   display: flex;
   margin: 0;
   width: 100vw;
-  height: 8vh;
+  height: 2rem;
   background-color: var(--topbar-color);
   align-items: center;
   justify-content: center;
