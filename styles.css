@@ -18,12 +18,14 @@ body {
 }
 
 .topbar {
+  display: flex;
   margin: 0;
   width: 100vw;
-  height: 6rem;
+  min-width: 60rem;
   background-color: var(--topbar-color);
+  justify-content: flex-start;
+  height: 6rem;
   color: var(--text-color);
-  margin: 0;
   padding: 2rem;
 }
 
@@ -33,10 +35,13 @@ body {
 .topbar-right {
   padding-right: 2rem;
 }
-.bookshelf {
+
+#bookshelf {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   margin: 0 auto;
+  height: 100%;
+  width: 60rem;
 }
 
 .form-card {
@@ -44,7 +49,7 @@ body {
   border: 1px solid #333;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  width: 16rem;
+  width: 18rem;
   height: 28rem;
   margin: 1rem;
 }
@@ -89,17 +94,12 @@ body {
   margin-bottom: 1rem;
 }
 
-.bookshelf {
-  height: 100%;
-  width: 100%;
-}
-
 .book {
   background-color: white;
   border: 1px solid #333;
   border-radius: 0.5rem;
   padding: 0.5rem;
-  width: 16rem;
+  width: 18rem;
   height: 28rem;
   margin: 1rem;
 }
