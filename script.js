@@ -43,7 +43,7 @@ function addBook() {
 function displayBooks() {
   resetDisplayedBooks();
   for (let i = 0; i < myLibrary.length; i++) {
-    createBookCard(myLibrary[i]);
+    createBookCard(myLibrary[i], i);
   }
 }
 
@@ -56,22 +56,27 @@ function resetDisplayedBooks() {
 }
 
 //create funtion to display book cards
-function createBookCard(book) {
+function createBookCard(book, index) {
   let bookCard = document.createElement("div");
   bookCard.classList.add("book");
+  bookCard.dataset.index = index;
 
+  //add title header
   let title = document.createElement("h2");
   title.innerHTML = book.title;
   bookCard.appendChild(title);
 
+  //add author
   let author = document.createElement("p");
   author.innerHTML = `Author: ${book.author}`;
   bookCard.appendChild(author);
 
+  //add number of pages
   let pages = document.createElement("p");
   pages.innerHTML = `${book.numberOfPages} pages long.`;
   bookCard.appendChild(pages);
 
+  //show wether book has been read or not.
   let read = document.createElement("p");
   if (book.haveRead) {
     read.innerHTML = "You have read this book";
@@ -80,6 +85,7 @@ function createBookCard(book) {
   }
   bookCard.appendChild(read);
 
+  //set button to change read status
   let changeStatusButton = document.createElement("button");
   changeStatusButton.innerHTML = "Change read status";
   changeStatusButton.addEventListener("click", () => {
@@ -88,11 +94,17 @@ function createBookCard(book) {
   });
   bookCard.appendChild(changeStatusButton);
 
+  //set button to remove book from array and refresh display
   let removeButton = document.createElement("button");
   removeButton.innerHTML = "Remove";
-  removeButton.addEventListener("click", removeBook);
+  removeButton.addEventListener("click", () => {
+    console.log(index);
+    myLibrary.splice(index, 1);
+    displayBooks();
+  });
   bookCard.appendChild(removeButton);
 
+  //attach bookCard to the display
   bookshelf.appendChild(bookCard);
 }
 
@@ -105,6 +117,7 @@ function handleForm() {
 
   if (checkInputs()) {
     addBook();
+    clearForm();
     displayBooks();
   }
 }
@@ -124,10 +137,11 @@ function checkInputs() {
   return true;
 }
 
-//locates book within array by id and removes that single object
-function removeBook(book) {
-  myLibrary.splice(book.target.dataset.ID, 1);
-  displayBooks();
+function clearForm() {
+  titleInput.value = "";
+  authorInput.value = "";
+  pagesInput.value = "";
+  readInput.value = "";
 }
 
 //setup button listeners
