@@ -3,7 +3,7 @@ const bookshelf = document.getElementById("bookshelf");
 const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 
 let myLibrary = [];
-myLibrary.push(theHobbit);
+// myLibrary.push(theHobbit);
 displayBooks();
 
 const titleInput = document.getElementById("title");
@@ -30,6 +30,7 @@ Book.prototype.info = function () {
 
 Book.prototype.changeStatus = function () {
   this.haveRead = !this.haveRead;
+  saveToLocalStorage();
   displayBooks();
 };
 
@@ -37,11 +38,13 @@ Book.prototype.changeStatus = function () {
 function addBook() {
   let book = new Book(title, author, pages, read);
   myLibrary.push(book);
+  saveToLocalStorage();
 }
 
 //create function to display books on screen
 function displayBooks() {
   resetDisplayedBooks();
+  grabFromLocalStorage();
   for (let i = 0; i < myLibrary.length; i++) {
     createBookCard(myLibrary[i], i);
   }
@@ -76,7 +79,7 @@ function createBookCard(book, index) {
   pages.innerHTML = `${book.numberOfPages} pages long.`;
   bookCard.appendChild(pages);
 
-  //show wether book has been read or not.
+  //show whether book has been read or not.
   let read = document.createElement("p");
   if (book.haveRead) {
     read.innerHTML = "You have read this book";
@@ -100,6 +103,7 @@ function createBookCard(book, index) {
   removeButton.addEventListener("click", () => {
     console.log(index);
     myLibrary.splice(index, 1);
+    saveToLocalStorage();
     displayBooks();
   });
   bookCard.appendChild(removeButton);
@@ -142,6 +146,26 @@ function clearForm() {
   authorInput.value = "";
   pagesInput.value = "";
   readInput.value = "";
+}
+
+function saveToLocalStorage() {
+  localStorage.setItem("myLibrary", JSON.stringify(myLibrary));
+  console.log("inside of save");
+}
+
+function grabFromLocalStorage() {
+  const books = JSON.parse(localStorage.getItem("myLibrary"));
+  console.log("inside of restore local");
+  if (books) {
+    myLibrary = books.map((book) => convertJSONtoBook(book));
+  } else {
+    myLibrary = [];
+  }
+}
+
+function convertJSONtoBook(book) {
+  console.log("inside of convert");
+  return new Book(book.title, book.author, book.numberOfPages, book.haveRead);
 }
 
 //setup button listeners
