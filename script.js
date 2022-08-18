@@ -1,9 +1,7 @@
 const submitButton = document.querySelector("[data-submit-button]");
 const bookshelf = document.getElementById("bookshelf");
-const theHobbit = new Book("The Hobbit", "J.R.R. Tolkien", 295, true);
 
 let myLibrary = [];
-// myLibrary.push(theHobbit);
 displayBooks();
 
 const titleInput = document.getElementById("title");
@@ -23,25 +21,20 @@ function Book(title, author, numberOfPages, haveRead) {
   this.haveRead = haveRead;
 }
 
-//set protype info function for Book objects
-Book.prototype.info = function () {
-  return `${this.title} by ${this.author}, ${this.numberOfPages} pages, ${this.haveRead}.`;
-};
-
 Book.prototype.changeStatus = function () {
   this.haveRead = !this.haveRead;
   saveToLocalStorage();
   displayBooks();
 };
 
-//create function to add a book to the myLibrary array
+//add a book to the myLibrary array and then save locally as JSON
 function addBook() {
   let book = new Book(title, author, pages, read);
   myLibrary.push(book);
   saveToLocalStorage();
 }
 
-//create function to display books on screen
+//update array with JSON information and update display
 function displayBooks() {
   resetDisplayedBooks();
   grabFromLocalStorage();
@@ -50,7 +43,7 @@ function displayBooks() {
   }
 }
 
-//create function to keep div.form-card HTML but remove all books
+//keep div.form-card HTML but remove all books
 function resetDisplayedBooks() {
   let currentBooks = document.querySelectorAll(".book");
   for (i = 0; i < currentBooks.length; i++) {
@@ -58,7 +51,6 @@ function resetDisplayedBooks() {
   }
 }
 
-//create funtion to display book cards
 function createBookCard(book, index) {
   let bookCard = document.createElement("div");
   bookCard.classList.add("book");
@@ -112,7 +104,6 @@ function createBookCard(book, index) {
   bookshelf.appendChild(bookCard);
 }
 
-//create function to handle form submition
 function handleForm() {
   title = titleInput.value;
   author = authorInput.value;
@@ -126,7 +117,6 @@ function handleForm() {
   }
 }
 
-//check that inputs are valid
 function checkInputs() {
   let form = document.querySelector(".form-card");
   let inputs = form.elements;
