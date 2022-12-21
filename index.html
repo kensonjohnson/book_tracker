@@ -1,42 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Book Tracker</title>
+    <script src="script.js" defer></script>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
 
-<head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Book Tracker</title>
-  <script src="script.js" defer></script>
-  <link rel="stylesheet" href="styles.css" />
-</head>
-
-<body>
-  <div class="topbar">
-    <h1>Book Tracker</h1>
-  </div>
-  <div class="library">
-    <div id="bookshelf">
-      <form class="form-card">
-        <h2>Add Book</h2>
-        <div class="form-group"><label for="title">Title</label>
-          <input type="text" name="title" id="title" />
-          <label for="author">Author</label>
-          <input type="text" name="author" id="author" />
-          <label for="pages">Number of Pages</label>
-          <input type="number" name="pages" id="pages" />
-          <label>Read yet?</label>
-          <div>
-            <input type="radio" name="read" id="read" value="yes">
-            <label for="yes">Yes</label>
-            <input type="radio" name="read" id="read" value="no">
-            <label for="no">No</label>
-          </div>
-        </div>
-        <button type="button" data-submit-button>Add Book</button>
-      </form>
+  <body>
+    <div class="topbar">
+      <h1>Book Tracker</h1>
     </div>
-  </div>
-  <div class="footer">Created by Kenson Johnson</div>
-</body>
-
+    <div class="library">
+      <div id="bookshelf">
+        <form class="form-card">
+          <h2>Add Book</h2>
+          <div class="form-group">
+            <label for="title">Title</label>
+            <input type="text" name="title" id="title" required />
+            <label for="author">Author</label>
+            <input type="text" name="author" id="author" required />
+            <label for="pages">Number of Pages</label>
+            <input type="number" name="pages" id="pages" required />
+            <label>Read yet?</label>
+            <div>
+              <input type="radio" name="read" id="read" value="yes" />
+              <label for="yes">Yes</label>
+              <input type="radio" name="read" id="read" value="no" />
+              <label for="no">No</label>
+            </div>
+          </div>
+          <button type="button" data-submit-button>Add Book</button>
+        </form>
+      </div>
+    </div>
+    <div class="footer">Created by Kenson Johnson</div>
+  </body>
 </html>
